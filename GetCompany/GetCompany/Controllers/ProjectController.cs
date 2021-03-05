@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace GetCompany.Controllers
 {
-    public class ProjectController : Controller
+    public partial class ProjectController : Controller
     {
         // GET: Project
-        public ActionResult Index()
+        public virtual ActionResult ProjectHome()
         {
             return View();
         }

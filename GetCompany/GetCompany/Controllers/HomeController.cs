@@ -9,24 +9,27 @@ using System.Web.Security;
 
 namespace GetCompany.Controllers
 {
-    public class HomeController : Controller
+    public partial class HomeController : Controller
     {
-        GetDatabaseEntities db = new GetDatabaseEntities();
+        private static GetDatabaseEntities db = new GetDatabaseEntities();
+        //private static UserRoleProvider userRoles = new UserRoleProvider();
 
 
-
-        public ActionResult Login()
+        public virtual ActionResult Login()
         {
-
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {    
+                return RedirectToAction("Home", "Home");
+            }
             return View();
         }
         [HttpPost]
-        [AllowAnonymous] 
-        public ActionResult Login(UserModel model)
+        [AllowAnonymous]
+        public virtual ActionResult Login(UserModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = DALUsers.GetUsers(model.UserName,model.Password);
+                var user = DALUsers.GetUsers(model.UserName, model.Password);
                 if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false);
@@ -37,14 +40,15 @@ namespace GetCompany.Controllers
             return View();
         }
         [AllowAnonymous]
-        public ActionResult SignOut()
+        public virtual ActionResult SignOut()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Login", "Home");
         }
-        public ActionResult Home()
+        public virtual ActionResult Home()
         {
-            if (HttpContext.User.Identity.IsAuthenticated) { 
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
                 return View();
             }
             return RedirectToAction("Login", "Home");

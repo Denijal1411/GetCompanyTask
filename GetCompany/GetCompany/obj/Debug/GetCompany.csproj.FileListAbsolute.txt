@@ -88,3 +88,4 @@ C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Microsoft.As
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\T4MVCExtensions.dll

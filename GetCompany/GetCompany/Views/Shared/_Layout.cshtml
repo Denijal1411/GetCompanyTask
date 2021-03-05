@@ -19,9 +19,9 @@
                 }
                 else
                 {
-                    @Html.ActionLink("User", "Login", "Home", new { area = "" }, new { @class = "navbar-brand" });
-                    @Html.ActionLink("Project", "Login", "Home", new { area = "" }, new { @class = "navbar-brand" });
-                    @Html.ActionLink("Task", "Login", "Home", new { area = "" }, new { @class = "navbar-brand" });
+                    @Html.ActionLink("Users", "UserHome", "User", new { area = "" }, new { @class = "navbar-brand" });
+                    @Html.ActionLink("Projects", "ProjectHome", "Project", new { area = "" }, new { @class = "navbar-brand" });
+                    @Html.ActionLink("Tasks", "TaskHome", "Task", new { area = "" }, new { @class = "navbar-brand" });
                 <span class="loginText">Logged in as <b> @(User.Identity.Name)</b>   @Html.ActionLink("Sign out", "SignOut", "Home") </span>
                 }
             </div>

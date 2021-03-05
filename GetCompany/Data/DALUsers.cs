@@ -6,14 +6,26 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class DALUsers
+    public static class DALUsers
     {
-        static GetDatabaseEntities db = new GetDatabaseEntities();
+        private static GetDatabaseEntities db = new GetDatabaseEntities();
         public static User  GetUsers(string username, string password) { 
             return db.Users.FirstOrDefault(x => x.UserName == username && x.Password == password);
-        }
-        public static int getRolesForUser(string username) {
-            return db.Users.FirstOrDefault(x => x.UserName == username).ID;
+        } 
+        public static void AddUser(string name, string surname, string email, string password, string username, int idrole)
+        { 
+            db.Users.Add(new User
+            {
+                Name = name,
+                IDRole=idrole,
+                Email=email,
+                Password=password,
+                Surname=surname,
+                UserName=username 
+
+            });
+
+            db.SaveChanges();
         }
     }
 }

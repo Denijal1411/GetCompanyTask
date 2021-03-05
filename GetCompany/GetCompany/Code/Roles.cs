@@ -5,10 +5,9 @@ using System.Web;
 
 namespace GetCompany.Code
 {
-    public enum IDRole
-    { 
+    public enum IDRoles {
         Administrator=1,
-        ProjectManager=2,
-        Developer=3 
-    } 
+        Project_Manager=2,
+        Developer=3
+    }
 }

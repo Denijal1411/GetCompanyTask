@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ContextsStoreContainer" CdmEntityContainer="GetDatabaseEntities">
+  <EntityContainerMapping StorageEntityContainer="GetDatabaseModelStoreContainer" CdmEntityContainer="GetDatabaseEntities">
     <EntitySetMapping Name="Projects">
-      <EntityTypeMapping TypeName="Contexts.Project">
+      <EntityTypeMapping TypeName="GetDatabaseModel.Project">
         <MappingFragment StoreEntitySet="Projects">
           <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
           <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
@@ -10,7 +10,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Roles">
-      <EntityTypeMapping TypeName="Contexts.Role">
+      <EntityTypeMapping TypeName="GetDatabaseModel.Role">
         <MappingFragment StoreEntitySet="Roles">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -18,7 +18,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tasks">
-      <EntityTypeMapping TypeName="Contexts.Task">
+      <EntityTypeMapping TypeName="GetDatabaseModel.Task">
         <MappingFragment StoreEntitySet="Tasks">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Assignee" ColumnName="Assignee" />
@@ -31,15 +31,14 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="Contexts.User">
+      <EntityTypeMapping TypeName="GetDatabaseModel.User">
         <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Surname" ColumnName="Surname" />
-          <ScalarProperty Name="IDRole" ColumnName="IDRole" />
           <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
