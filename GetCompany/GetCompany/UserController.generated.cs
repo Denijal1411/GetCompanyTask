@@ -59,6 +59,12 @@ namespace GetCompany.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult DeleteUser()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteUser);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public UserController Actions { get { return MVC.User; } }
@@ -76,15 +82,35 @@ namespace GetCompany.Controllers
         public class ActionNamesClass
         {
             public readonly string UserHome = "UserHome";
+            public readonly string AddUser = "AddUser";
+            public readonly string DeleteUser = "DeleteUser";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string UserHome = "UserHome";
+            public const string AddUser = "AddUser";
+            public const string DeleteUser = "DeleteUser";
         }
 
 
+        static readonly ActionParamsClass_AddUser s_params_AddUser = new ActionParamsClass_AddUser();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_AddUser AddUserParams { get { return s_params_AddUser; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_AddUser
+        {
+            public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_DeleteUser s_params_DeleteUser = new ActionParamsClass_DeleteUser();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_DeleteUser DeleteUserParams { get { return s_params_DeleteUser; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_DeleteUser
+        {
+            public readonly string username = "username";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -95,8 +121,10 @@ namespace GetCompany.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string AddUser = "AddUser";
                 public readonly string UserHome = "UserHome";
             }
+            public readonly string AddUser = "~/Views/User/AddUser.cshtml";
             public readonly string UserHome = "~/Views/User/UserHome.cshtml";
         }
     }
@@ -114,6 +142,41 @@ namespace GetCompany.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.UserHome);
             UserHomeOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AddUserOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult AddUser()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddUser);
+            AddUserOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AddUserOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, GetCompany.Models.CreateUserModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult AddUser(GetCompany.Models.CreateUserModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddUser);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            AddUserOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DeleteUserOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string username);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DeleteUser(string username)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteUser);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "username", username);
+            DeleteUserOverride(callInfo, username);
             return callInfo;
         }
 

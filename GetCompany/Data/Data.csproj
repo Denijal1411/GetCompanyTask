@@ -65,6 +65,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Contexts.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DALUserRoles.cs" />
     <Compile Include="DALUsers.cs" />
     <Compile Include="Project.cs">
       <DependentUpon>Contexts.tt</DependentUpon>

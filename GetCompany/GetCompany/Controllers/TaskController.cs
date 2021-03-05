@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace GetCompany.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public partial class TaskController : Controller
     {
         // GET: Task

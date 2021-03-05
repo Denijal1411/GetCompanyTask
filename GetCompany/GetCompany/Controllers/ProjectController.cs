@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace GetCompany.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public partial class ProjectController : Controller
-    {
-        // GET: Project
+    { 
         public virtual ActionResult ProjectHome()
         {
             return View();

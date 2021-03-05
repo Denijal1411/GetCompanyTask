@@ -1,9 +1,43 @@
-﻿@model GetCompany.Models.CreateUserModel
+﻿@model List<Data.User>
 @{
     ViewBag.Title = "UserHome";
-   
+    var roles= GetCompany.Code.Roles.GetIDRolesString();
 }
-  
+
 <a class="btn btn-success" href="@Url.Action("AddUser","User")">Add new user</a>
+<hr />
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Roles</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <th scope="row"></th>
+            <td>@(item.Name + " "+item.Surname)</td>
+            <td>@item.UserName</td>
+            <td>@item.Email</td>
+            <td>@(roles.FirstOrDefault(x=>Convert.ToInt32(x.Split('-')[1])==item.IDRole).Split('-')[0] )</td>
+            <td>
+                <a class="btn btn-primary">Edit</a> 
+                @Html.ActionLink("Delete","DeleteUser","User",new {username=item.UserName },new { @class = "btn btn-primary"})
+
+            </td>
+        </tr>
+        }
+
+
+
+    </tbody>
+</table>
+ 
 
 

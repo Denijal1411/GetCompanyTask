@@ -8,16 +8,19 @@ using System.Web.Mvc;
 
 namespace GetCompany.Controllers
 {
+    [Authorize(Roles="Administrator")]
     public partial class UserController : Controller
     {
-        // GET: User
+        // GET: User 
         public virtual ActionResult UserHome()
         {
-            return View();
+            var users = DALUsers.GetAllUsers().ToList(); 
+            return View(users);
         }
         [HttpGet]
         public virtual ActionResult AddUser()
         {
+            var s = DALUserRoles.GetUserRole(HttpContext.User.Identity.Name);
             return View();
         }
         [HttpPost]
@@ -29,6 +32,10 @@ namespace GetCompany.Controllers
             }
             return View();
             
+        }
+        public virtual ActionResult DeleteUser(string username) {
+            DALUsers.DeleteUser(username);
+            return RedirectToAction("UserHome", "User");
         }
     }
 }

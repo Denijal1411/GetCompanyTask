@@ -8,10 +8,15 @@ namespace Data
 {
     public static class DALUsers
     {
+
         private static GetDatabaseEntities db = new GetDatabaseEntities();
         public static User  GetUsers(string username, string password) { 
             return db.Users.FirstOrDefault(x => x.UserName == username && x.Password == password);
-        } 
+        }
+        public static List<User> GetAllUsers()
+        {
+            return db.Users.ToList();
+        }
         public static void AddUser(string name, string surname, string email, string password, string username, int idrole)
         { 
             db.Users.Add(new User
@@ -25,6 +30,11 @@ namespace Data
 
             });
 
+            db.SaveChanges();
+        }
+        public static void DeleteUser(string username) {
+            var searchUser=db.Users.FirstOrDefault(x => x.UserName==username);
+            db.Users.Remove(searchUser);
             db.SaveChanges();
         }
     }

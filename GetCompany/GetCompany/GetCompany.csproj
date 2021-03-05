@@ -150,6 +150,7 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\WebRoleProvider.cs" />
     <Compile Include="ProjectController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>

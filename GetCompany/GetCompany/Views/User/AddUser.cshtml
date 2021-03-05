@@ -1,11 +1,7 @@
 ﻿@model GetCompany.Models.CreateUserModel
 @{
     ViewBag.Title = "AddUser";
-    List<string> rolesEnum = new List<string>();
-    foreach (var foo in Enum.GetValues(typeof(GetCompany.Code.IDRoles)))
-    {
-        rolesEnum.Add(foo.ToString() + "-" + (int)foo);
-    }
+    var rolesEnum = GetCompany.Code.Roles.GetIDRolesString();
 }
 
 @using (Html.BeginForm("AddUser", "User", FormMethod.Post, new { @class = "form-horizontal" }))
@@ -31,7 +27,7 @@
         @Html.ValidationMessageFor(x => x.Password, "", new { @class = "errorMessage" })
     </div>
     <div class="form-group row">
-        @Html.DropDownListFor(x => x.IDRole, new SelectList(rolesEnum).Select(p => new SelectListItem() { Text = p.Text.Split('-')[0], Value = p.Text.Split('-')[1] }), "---Choose Roles---", new { @class = "mb-2" })
+        @Html.DropDownListFor(x => x.IDRole, new SelectList(rolesEnum).Select(p => new SelectListItem() { Text = p.Text.Split('-')[0], Value = p.Text.Split('-')[1] }), "Choose Role", new { @class = "mb-2" })
         @Html.ValidationMessageFor(x => x.IDRole, "", new { @class = "errorMessage" })
     </div>
     <div class="form-group row">
