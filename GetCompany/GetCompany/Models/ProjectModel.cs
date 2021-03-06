@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,5 +12,7 @@ namespace GetCompany.Models
         public int ProjectCode { get; set; }
         [Required(ErrorMessage = "Name is required.")]
         public string Name { get; set; }
+        public string Assignee { get; set; }
+        public List<User> Users { get; set; }
     }
 }

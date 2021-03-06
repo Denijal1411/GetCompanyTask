@@ -1,5 +1,5 @@
 ﻿.errorMessage {
-    border:1px solid  red; 
+    color:red; 
 }
 li {
     list-style-type: none;

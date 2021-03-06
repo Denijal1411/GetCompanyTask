@@ -18,7 +18,10 @@ namespace GetCompany.Controllers
         }
         public virtual ActionResult AddProject()
         {
-            return View();
+            //ViewBag.Managers= dal.GetManagers();
+            ProjectModel a = new ProjectModel();
+            a.Users = dal.GetManagers();
+            return View(a);
         }
         [HttpPost]
         public virtual ActionResult AddProject(ProjectModel model)

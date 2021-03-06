@@ -6,6 +6,7 @@
     </Key>
     <Property Name="ProjectCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProjectName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Assignee" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="Roles">
     <Key>
@@ -37,6 +38,18 @@
     <Property Name="IDRole" Type="int" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="300" Nullable="false" />
   </EntityType>
+  <Association Name="FK__Projects__Assign__3C69FB99">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="Projects">
+        <PropertyRef Name="Assignee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Tasks__Assignee__35BCFE0A">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
@@ -78,6 +91,10 @@
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Projects__Assign__3C69FB99" Association="Self.FK__Projects__Assign__3C69FB99">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Projects" EntitySet="Projects" />
+    </AssociationSet>
     <AssociationSet Name="FK__Tasks__Assignee__35BCFE0A" Association="Self.FK__Tasks__Assignee__35BCFE0A">
       <End Role="Users" EntitySet="Users" />
       <End Role="Tasks" EntitySet="Tasks" />

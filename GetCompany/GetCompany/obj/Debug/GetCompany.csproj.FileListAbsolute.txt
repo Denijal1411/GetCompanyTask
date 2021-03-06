@@ -1,5 +1,3 @@
-C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\obj\Debug\GetCompany.csprojAssemblyReference.cache
-C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\obj\Debug\GetCompany.csproj.CoreCompileInputs.cache
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\GetCompany.dll.config
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\GetCompany.dll
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\GetCompany.pdb
@@ -86,6 +84,8 @@ C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\System.Web.W
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Newtonsoft.Json.xml
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Antlr3.Runtime.pdb
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\obj\Debug\GetCompany.csprojAssemblyReference.cache
+C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\obj\Debug\GetCompany.csproj.CoreCompileInputs.cache
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\obj\Debug\GetCompany.csproj.CopyComplete
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\obj\Debug\GetCompany.dll
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\obj\Debug\GetCompany.pdb

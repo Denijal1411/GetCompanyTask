@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Projects">
       <EntityTypeMapping TypeName="GetDatabaseModel.Project">
         <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="Assignee" ColumnName="Assignee" />
           <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
           <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
         </MappingFragment>

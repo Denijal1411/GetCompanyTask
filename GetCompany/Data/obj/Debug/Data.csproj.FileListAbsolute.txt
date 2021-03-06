@@ -5,7 +5,6 @@ C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\Data\bin\Debug\EntityFramew
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\Data\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\Data\bin\Debug\EntityFramework.xml
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\Data\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\Data\obj\Debug\Data.csprojAssemblyReference.cache
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\Data\obj\Debug\Data.csproj.CopyComplete
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\Data\obj\Debug\Data.dll

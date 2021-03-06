@@ -10,6 +10,10 @@ namespace Data
     public class  DALProject:DAL<Project>
     {
         private static GetDatabaseEntities db = new GetDatabaseEntities();
+
+        public  List<User> GetManagers() { 
+            return db.Users.Where(x => x.IDRole == 2).ToList();
+        }
         public override void Add(Project project)
         {
             db.Projects.Add(project); 
