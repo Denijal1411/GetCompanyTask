@@ -1,3 +1,5 @@
+C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\obj\Debug\GetCompany.csprojAssemblyReference.cache
+C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\obj\Debug\GetCompany.csproj.CoreCompileInputs.cache
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\GetCompany.dll.config
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\GetCompany.dll
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\GetCompany.pdb
@@ -54,6 +56,8 @@ C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Antlr3.Runti
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Data.dll
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\EntityFramework.dll
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\EntityFramework.SqlServer.dll
+C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Newtonsoft.Json.dll
@@ -64,11 +68,14 @@ C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\System.Web.R
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\System.Web.WebPages.Deployment.dll
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\System.Web.WebPages.dll
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\System.Web.WebPages.Razor.dll
+C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\T4MVCExtensions.dll
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\WebGrease.dll
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Data.pdb
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Data.dll.config
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\EntityFramework.xml
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\EntityFramework.SqlServer.xml
+C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\System.Web.Helpers.xml
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\System.Web.Mvc.xml
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\System.Web.Optimization.xml
@@ -79,13 +86,6 @@ C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\System.Web.W
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Newtonsoft.Json.xml
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Antlr3.Runtime.pdb
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\obj\Debug\GetCompany.csprojAssemblyReference.cache
-C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\obj\Debug\GetCompany.csproj.CoreCompileInputs.cache
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\obj\Debug\GetCompany.csproj.CopyComplete
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\obj\Debug\GetCompany.dll
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\obj\Debug\GetCompany.pdb
-C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Microsoft.AspNet.Identity.Core.dll
-C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Microsoft.AspNet.Identity.Core.xml
-C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\GetCompany\bin\T4MVCExtensions.dll

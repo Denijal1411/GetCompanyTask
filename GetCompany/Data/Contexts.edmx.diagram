@@ -12,6 +12,7 @@
         <EntityTypeShape EntityType="GetDatabaseModel.User" Width="1.5" PointX="9" PointY="5.25" />
         <AssociationConnector Association="GetDatabaseModel.FK__Users__IDRole__34C8D9D1" />
         <AssociationConnector Association="GetDatabaseModel.FK__Tasks__Assignee__35BCFE0A" />
+        <AssociationConnector Association="GetDatabaseModel.FK__Projects__Assign__3C69FB99" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

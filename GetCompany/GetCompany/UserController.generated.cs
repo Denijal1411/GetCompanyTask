@@ -65,6 +65,12 @@ namespace GetCompany.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteUser);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult EditUser()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditUser);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public UserController Actions { get { return MVC.User; } }
@@ -84,6 +90,7 @@ namespace GetCompany.Controllers
             public readonly string UserHome = "UserHome";
             public readonly string AddUser = "AddUser";
             public readonly string DeleteUser = "DeleteUser";
+            public readonly string EditUser = "EditUser";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -92,6 +99,7 @@ namespace GetCompany.Controllers
             public const string UserHome = "UserHome";
             public const string AddUser = "AddUser";
             public const string DeleteUser = "DeleteUser";
+            public const string EditUser = "EditUser";
         }
 
 
@@ -111,6 +119,15 @@ namespace GetCompany.Controllers
         {
             public readonly string username = "username";
         }
+        static readonly ActionParamsClass_EditUser s_params_EditUser = new ActionParamsClass_EditUser();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_EditUser EditUserParams { get { return s_params_EditUser; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_EditUser
+        {
+            public readonly string username = "username";
+            public readonly string model = "model";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -122,9 +139,11 @@ namespace GetCompany.Controllers
             public class _ViewNamesClass
             {
                 public readonly string AddUser = "AddUser";
+                public readonly string EditUser = "EditUser";
                 public readonly string UserHome = "UserHome";
             }
             public readonly string AddUser = "~/Views/User/AddUser.cshtml";
+            public readonly string EditUser = "~/Views/User/EditUser.cshtml";
             public readonly string UserHome = "~/Views/User/UserHome.cshtml";
         }
     }
@@ -177,6 +196,30 @@ namespace GetCompany.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteUser);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "username", username);
             DeleteUserOverride(callInfo, username);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void EditUserOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string username);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult EditUser(string username)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditUser);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "username", username);
+            EditUserOverride(callInfo, username);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void EditUserOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, GetCompany.Models.CreateUserModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult EditUser(GetCompany.Models.CreateUserModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditUser);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            EditUserOverride(callInfo, model);
             return callInfo;
         }
 

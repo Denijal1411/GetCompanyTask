@@ -121,6 +121,7 @@ namespace Links
         public static readonly string popper_js_map = Url("popper.js.map");
         public static readonly string popper_min_js = Url("popper.min.js");
         public static readonly string popper_min_js_map = Url("popper.min.js.map");
+        public static readonly string ProjectScript_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/ProjectScript.min.js") ? Url("ProjectScript.min.js") : Url("ProjectScript.js");
         public static readonly string README_md = Url("README.md");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class src {
@@ -385,6 +386,7 @@ namespace Links
                 public static readonly string popper_utils_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/popper-utils.min.js"); 
                 public static readonly string popper_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/popper.js"); 
                 public static readonly string popper_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/popper.min.js"); 
+                public static readonly string ProjectScript_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/ProjectScript.js"); 
             }
         }
         public static partial class Content 

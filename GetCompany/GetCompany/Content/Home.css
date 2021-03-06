@@ -1,5 +1,5 @@
 ﻿.errorMessage {
-    color: red; 
+    border:1px solid  red; 
 }
 li {
     list-style-type: none;
@@ -9,4 +9,4 @@ li {
     float: right;
     font-size: 12px;
     right: 253px;
-}
+} 

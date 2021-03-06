@@ -59,6 +59,18 @@ namespace GetCompany.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult DeleteProject()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteProject);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult EditProject()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditProject);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ProjectController Actions { get { return MVC.Project; } }
@@ -76,15 +88,46 @@ namespace GetCompany.Controllers
         public class ActionNamesClass
         {
             public readonly string ProjectHome = "ProjectHome";
+            public readonly string AddProject = "AddProject";
+            public readonly string DeleteProject = "DeleteProject";
+            public readonly string EditProject = "EditProject";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string ProjectHome = "ProjectHome";
+            public const string AddProject = "AddProject";
+            public const string DeleteProject = "DeleteProject";
+            public const string EditProject = "EditProject";
         }
 
 
+        static readonly ActionParamsClass_AddProject s_params_AddProject = new ActionParamsClass_AddProject();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_AddProject AddProjectParams { get { return s_params_AddProject; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_AddProject
+        {
+            public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_DeleteProject s_params_DeleteProject = new ActionParamsClass_DeleteProject();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_DeleteProject DeleteProjectParams { get { return s_params_DeleteProject; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_DeleteProject
+        {
+            public readonly string projectCode = "projectCode";
+        }
+        static readonly ActionParamsClass_EditProject s_params_EditProject = new ActionParamsClass_EditProject();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_EditProject EditProjectParams { get { return s_params_EditProject; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_EditProject
+        {
+            public readonly string projectCode = "projectCode";
+            public readonly string model = "model";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -95,8 +138,12 @@ namespace GetCompany.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string AddProject = "AddProject";
+                public readonly string EditProject = "EditProject";
                 public readonly string ProjectHome = "ProjectHome";
             }
+            public readonly string AddProject = "~/Views/Project/AddProject.cshtml";
+            public readonly string EditProject = "~/Views/Project/EditProject.cshtml";
             public readonly string ProjectHome = "~/Views/Project/ProjectHome.cshtml";
         }
     }
@@ -114,6 +161,65 @@ namespace GetCompany.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ProjectHome);
             ProjectHomeOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AddProjectOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult AddProject()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddProject);
+            AddProjectOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AddProjectOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, GetCompany.Models.ProjectModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult AddProject(GetCompany.Models.ProjectModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddProject);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            AddProjectOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DeleteProjectOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string projectCode);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DeleteProject(string projectCode)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteProject);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "projectCode", projectCode);
+            DeleteProjectOverride(callInfo, projectCode);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void EditProjectOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string projectCode);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult EditProject(string projectCode)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditProject);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "projectCode", projectCode);
+            EditProjectOverride(callInfo, projectCode);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void EditProjectOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, GetCompany.Models.ProjectModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult EditProject(GetCompany.Models.ProjectModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditProject);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            EditProjectOverride(callInfo, model);
             return callInfo;
         }
 

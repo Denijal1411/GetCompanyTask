@@ -30,7 +30,7 @@ namespace GetCompany.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = DALUsers.GetUsers(model.UserName, model.Password);
+                var user = DALUsers.CheckUser(model.UserName, model.Password);
                 if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false);  
