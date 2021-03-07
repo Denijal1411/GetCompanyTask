@@ -24,9 +24,10 @@ function AddProject() {
         else {
             document.getElementById("Assignee").style.border = "";
         }
-        document.getElementById("messageName").innerHTML = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>" +
-            "<span><strong>Fill out </strong> Project name and Project manager </span><button type='button' class='close' data-dismiss='alert' aria-label='Close'>" +
-            " <span aria-hidden='true'>&times;</span></button></div>"; 
+        //document.getElementById("messageName").innerHTML = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>" +
+        //    "<span><strong>Fill out </strong> Project name and Project manager </span><button type='button' class='close' data-dismiss='alert' aria-label='Close'>" +
+        //    " <span aria-hidden='true'>&times;</span></button></div>"; 
+        alert("Fill out Project name and Project manager")
 
         event.preventDefault();
     } 
