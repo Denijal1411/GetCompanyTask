@@ -38,7 +38,7 @@ namespace GetCompany.Models
 
         public override string[] GetRolesForUser(string username)
         {
-            return DALUserRoles.GetAllRole(username); 
+            return DALUserRoles.GetUserRoles(username); 
         }
 
         public override string[] GetUsersInRole(string roleName)

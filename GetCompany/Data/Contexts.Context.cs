@@ -27,7 +27,7 @@ namespace Data
     
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<Task> Tasks { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Task> Tasks { get; set; }
     }
 }

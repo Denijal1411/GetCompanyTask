@@ -12,9 +12,9 @@ namespace GetCompany.Controllers
     [Authorize(Roles="Administrator,Project Manager")]
     public partial class UserController : Controller
     {
-        DALUsers dal = new DALUsers(); 
+        DALUsers dal = new DALUsers();    
         public virtual ActionResult UserHome()
-        { 
+        {
             return View(dal.GetAll());
         } 
         public virtual ActionResult AddUser()
@@ -24,17 +24,30 @@ namespace GetCompany.Controllers
         [HttpPost]
         public virtual ActionResult AddUser(CreateUserModel model)
         {
-            if (ModelState.IsValid) 
+            if (dal.UserExists(model.UserName) == true) ModelState.AddModelError("UserName", "Username already exists!.");
+            if (ModelState.IsValid)
             { 
-                dal.Add(new User(){
-                    Email = model.Email,
-                    IDRole = model.IDRole,
-                    Name = model.Name,
-                    Password = model.Password,
-                    Surname = model.Surname,
-                    UserName = model.UserName
-                }); 
-                return RedirectToAction("UserHome", "User");
+                try
+                { 
+                        dal.Add(new User()
+                    {
+                        Email = model.Email,
+                        IDRole = model.IDRole,
+                        Name = model.Name,
+                        Password = model.Password,
+                        Surname = model.Surname,
+                        UserName = model.UserName
+                    });
+                    return RedirectToAction("UserHome", "User");
+                }
+                catch (Exception)
+                {
+
+                    return View();
+                }
+
+
+
             }
             return View();
             
@@ -49,8 +62,7 @@ namespace GetCompany.Controllers
         public virtual ActionResult EditUser(string username)
         { 
             try {
-                var user = dal.Get(new User() { UserName=username});
-                if (user == null) { throw new ArgumentException("username is null"); }
+                var user = dal.Get(new User() { UserName=username}); 
  
                 
                
@@ -61,7 +73,9 @@ namespace GetCompany.Controllers
                     IDRole = user.IDRole,
                     Name = user.Name,
                     Password = user.Password,
-                    UserName = user.UserName
+                    UserName = user.UserName,
+                    Roles=DALUserRoles.GetAllRoles()
+                    
                 });
             }
             catch (Exception e) {

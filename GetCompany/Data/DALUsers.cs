@@ -13,7 +13,11 @@ namespace Data
         public static User CheckUser(string username, string password)
         {
             return db.Users.FirstOrDefault(x => x.UserName == username && x.Password == password);
-        } 
+        }
+        public bool UserExists(string username)
+        {
+            return db.Users.FirstOrDefault(x => x.UserName == username) !=null ?true:false;
+        }
         public override void Update(User user)
         {
             var searchUser = db.Users.FirstOrDefault(x => x.UserName == user.UserName);
@@ -26,7 +30,7 @@ namespace Data
             db.SaveChanges();
         }
         public override void Add(User user)
-        {
+        { 
             db.Users.Add(user);
 
             db.SaveChanges(); 

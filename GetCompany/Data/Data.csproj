@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="DAL.cs" />
     <Compile Include="DALProject.cs" />
+    <Compile Include="DALTasks.cs" />
     <Compile Include="DALUserRoles.cs" />
     <Compile Include="DALUsers.cs" />
     <Compile Include="Project.cs">

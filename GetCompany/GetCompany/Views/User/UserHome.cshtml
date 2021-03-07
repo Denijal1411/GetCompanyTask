@@ -1,17 +1,17 @@
 ﻿@model List<Data.User>
 @{
     ViewBag.Title = "UserHome";
-    var roles= GetCompany.Code.Roles.GetIDRolesString();
+     
 }
  
 <div class="container">
     <div class="card">
         <div class="card-header text-secondary">
             <span>List of users</span>
-            <a class="btn btn-outline-success float-right" href="@Url.Action("AddUser","User")">Add new user</a>
+            <a class="btn btn-outline-success float-right btn-sm" href="@Url.Action("AddUser","User")">Add new user</a>
         </div>
         <div class="card-body">     
-            <table class="table">
+            <table class="table table_font_size">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
@@ -24,17 +24,17 @@
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
-                    {
+                    {//Dole se vidi kod Delete dugmeta da Administrator ne moze sebe da obrise 1411
                         <tr>
                             <th scope="row"></th>
                             <td>@(item.Name + " "+item.Surname)</td>
                             <td>@item.UserName</td>
                             <td>@item.Email</td>
-                            <td>@(roles.FirstOrDefault(x=>Convert.ToInt32(x.Split('-')[1])==item.IDRole).Split('-')[0] )</td>
+                            <td>@(item.Role.Name)</td>
                             <td class="text-right">
-                                @Html.ActionLink("Edit", "EditUser", "User", new { username = item.UserName }, new { @class = "btn btn-outline-info" })
-
-                                @Html.ActionLink("Delete", "DeleteUser", "User", new { username = item.UserName }, new { @class = "btn btn-outline-danger" })
+                                @Html.ActionLink("Edit", "EditUser", "User", new { username = item.UserName }, new { @class = "btn btn-outline-info btn-sm" })
+                                
+                                @Html.ActionLink("Delete", "DeleteUser", "User", new { username = item.UserName }, new { @class =(item.Role.Name.ToLower() == "administrator" ? " disabled" : "")+ " btn btn-outline-danger btn-sm " })
 
                             </td>
                         </tr>

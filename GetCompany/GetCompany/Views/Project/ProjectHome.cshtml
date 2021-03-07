@@ -1,6 +1,6 @@
 ﻿@model List<Data.Project>
 @{
-    ViewBag.Title = "ProjectHome"; 
+    ViewBag.Title = "ProjectHome";
 }
 
 
@@ -8,10 +8,10 @@
     <div class="card">
         <div class="card-header text-secondary">
             <span>List of projects</span>
-            <a class="btn btn-outline-success float-right" href="@Url.Action("AddProject","Project")">Add new project</a>
+            <a class="btn btn-outline-success float-right btn-sm" href="@Url.Action("AddProject","Project")">Add new project</a>
         </div>
-        <div class="card-body"> 
-            <table class="table">
+        <div class="card-body">
+            <table class="table table_font_size">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
@@ -24,23 +24,54 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <th scope="row"></th>
-                        <td>@(item.ProjectCode)</td>
-                        <th>@item.ProjectName</th> 
-                        <td>@(item.User.Name +" "+item.User.Surname)</td>
-                        <td class="text-right">
-                            @Html.ActionLink("Edit", "EditProject", "Project", new { projectCode = item.ProjectCode }, new { @class = "btn btn-outline-info" })
+                        <tr>
+                            <th scope="row"></th>
+                            <td>@(item.ProjectCode)</td>
+                            <th>@item.ProjectName</th>
+                            <td>@(item.User.Name +" "+item.User.Surname)</td>
 
-                            @Html.ActionLink("Delete", "DeleteProject", "Project", new { projectCode = item.ProjectCode }, new { @class = "btn btn-outline-danger" })
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <td class="text-right">
+                                    @Html.ActionLink("Edit", "EditProject", "Project", new { projectCode = item.ProjectCode }, new { @class = "btn btn-outline-info btn-sm" })
 
-                        </td>
-                    </tr>
+                                    @Html.ActionLink("Delete", "DeleteProject", "Project", new { projectCode = item.ProjectCode }, new { @class = "btn btn-outline-danger btn-sm" })
+
+                                </td>
+                            }
+                            @if (User.IsInRole("Project Manager"))
+                            {
+                                <td class="text-right">
+                                    @Html.ActionLink("Details", "DetailProject", "Project", new { projectCode = item.ProjectCode }, new { @class = "btn btn-outline-info btn-sm", @data_toggle = "modal", @data_target = "#exampleModal" })
+
+                                </td>
+                            }
+
+                        </tr>
                     }
                 </tbody>
             </table>
         </div>
     </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Project details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 

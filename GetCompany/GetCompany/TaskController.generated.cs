@@ -59,6 +59,18 @@ namespace GetCompany.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult DeleteTask()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteTask);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult EditTask()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditTask);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public TaskController Actions { get { return MVC.Task; } }
@@ -76,15 +88,46 @@ namespace GetCompany.Controllers
         public class ActionNamesClass
         {
             public readonly string TaskHome = "TaskHome";
+            public readonly string AddTask = "AddTask";
+            public readonly string DeleteTask = "DeleteTask";
+            public readonly string EditTask = "EditTask";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string TaskHome = "TaskHome";
+            public const string AddTask = "AddTask";
+            public const string DeleteTask = "DeleteTask";
+            public const string EditTask = "EditTask";
         }
 
 
+        static readonly ActionParamsClass_AddTask s_params_AddTask = new ActionParamsClass_AddTask();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_AddTask AddTaskParams { get { return s_params_AddTask; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_AddTask
+        {
+            public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_DeleteTask s_params_DeleteTask = new ActionParamsClass_DeleteTask();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_DeleteTask DeleteTaskParams { get { return s_params_DeleteTask; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_DeleteTask
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_EditTask s_params_EditTask = new ActionParamsClass_EditTask();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_EditTask EditTaskParams { get { return s_params_EditTask; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_EditTask
+        {
+            public readonly string id = "id";
+            public readonly string model = "model";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -95,8 +138,12 @@ namespace GetCompany.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string AddTask = "AddTask";
+                public readonly string EditTask = "EditTask";
                 public readonly string TaskHome = "TaskHome";
             }
+            public readonly string AddTask = "~/Views/Task/AddTask.cshtml";
+            public readonly string EditTask = "~/Views/Task/EditTask.cshtml";
             public readonly string TaskHome = "~/Views/Task/TaskHome.cshtml";
         }
     }
@@ -114,6 +161,65 @@ namespace GetCompany.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.TaskHome);
             TaskHomeOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AddTaskOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult AddTask()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddTask);
+            AddTaskOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AddTaskOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, GetCompany.Models.TaskModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult AddTask(GetCompany.Models.TaskModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddTask);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            AddTaskOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DeleteTaskOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DeleteTask(string id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteTask);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            DeleteTaskOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void EditTaskOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult EditTask(string id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditTask);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            EditTaskOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void EditTaskOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, GetCompany.Models.TaskModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult EditTask(GetCompany.Models.TaskModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditTask);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            EditTaskOverride(callInfo, model);
             return callInfo;
         }
 

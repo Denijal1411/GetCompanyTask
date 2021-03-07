@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace GetCompany.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator, Project Manager")]
     public partial class ProjectController : Controller
     {
         DALProject dal = new DALProject();
@@ -18,10 +18,15 @@ namespace GetCompany.Controllers
         }
         public virtual ActionResult AddProject()
         { 
-            ProjectModel a = new ProjectModel();  
-            a.Users = dal.GetManagers(); 
-            return View(a);
-        } 
+            ProjectModel allManagers = new ProjectModel();
+            allManagers.Users = dal.GetManagers();
+            allManagers.Assignee = User.Identity.Name;
+            return View(allManagers);
+        }
+        public virtual ActionResult DetailProject()
+        {
+            return View();
+        }
         [HttpPost]
         public virtual ActionResult AddProject(ProjectModel model)
         {
@@ -42,11 +47,15 @@ namespace GetCompany.Controllers
             try
             {
                 var project = dal.Get(new Project() { ProjectCode=Convert.ToInt32(projectCode)});
-                if (project == null) { throw new ArgumentException("project is null"); } 
+                if (project == null) { throw new ArgumentException("project is null"); }
+                ProjectModel allManagers = new ProjectModel();
+                allManagers.Users = dal.GetManagers();
 
                 return View(new ProjectModel(){
                     Name=project.ProjectName,
-                    ProjectCode=project.ProjectCode
+                    ProjectCode=project.ProjectCode,
+                    Assignee=project.Assignee ,
+                    Users= allManagers.Users
                 });
             }
             catch (Exception e)
@@ -63,7 +72,8 @@ namespace GetCompany.Controllers
                 dal.Update(new Project()
                 {
                     ProjectCode=model.ProjectCode,
-                    ProjectName=model.Name
+                    ProjectName=model.Name,
+                    Assignee=model.Assignee
                 });
                 return RedirectToAction("ProjectHome", "Project");
             }

@@ -1,8 +1,9 @@
 ﻿@model GetCompany.Models.CreateUserModel
 @{
     ViewBag.Title = "AddUser";
-    var rolesEnum = GetCompany.Code.Roles.GetIDRolesString();
+    var Roles = Data.DALUserRoles.GetAllRoles();
 }
+
 <div class="container">
     <div class="card">
         <div class="card-header text-secondary">
@@ -23,7 +24,7 @@
                 <div class="form-group row">
 
                     @Html.TextBoxFor(x => x.UserName, new { @class = "form-control mb-2", placeholder = "Username:" })
-                    @Html.ValidationMessageFor(x => x.UserName, "", new { @class = "errorMessage" })
+                    @Html.ValidationMessageFor(x => x.UserName, "", new { @class = "errorMessage" })  
                 </div>
                 <div class="form-group row">
                     @Html.TextBoxFor(x => x.Email, new { @class = "form-control mb-2", placeholder = "e-mail:", type = "email" })
@@ -34,9 +35,9 @@
                     @Html.ValidationMessageFor(x => x.Password, "", new { @class = "errorMessage" })
                     <div><input type="checkbox" onclick="visiblePassword()">Show Password</div>
                 </div>
-                
+
                 <div class="form-group row">
-                    @Html.DropDownListFor(x => x.IDRole, new SelectList(rolesEnum).Select(p => new SelectListItem() { Text = p.Text.Split('-')[0], Value = p.Text.Split('-')[1] }), "Choose Role", new { @class = "mb-2" })
+                    @Html.DropDownListFor(x=>x.IDRole, Roles.Select(x=>new SelectListItem() { Text=x.Name,Value=x.ID.ToString()}),"All roles")
                     @Html.ValidationMessageFor(x => x.IDRole, "", new { @class = "errorMessage" })
                 </div>
                 <div class="form-group row">

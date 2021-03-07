@@ -39,8 +39,9 @@ namespace Data
 
         public override void Update(Project t)
         {
-            var searchUser = db.Projects.FirstOrDefault(x => x.ProjectCode == t.ProjectCode);
-            searchUser.ProjectName = t.ProjectName;  
+            var search = db.Projects.FirstOrDefault(x => x.ProjectCode == t.ProjectCode);
+            search.ProjectName = t.ProjectName;
+            search.Assignee = t.Assignee;  
             db.SaveChanges();
         }
     }

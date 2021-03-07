@@ -21,10 +21,10 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Assignee" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="Progress" Type="int" Nullable="false" />
     <Property Name="Deadline" Type="datetime" Nullable="false" />
-    <Property Name="Description" Type="text" />
+    <Property Name="Description" Type="text" Nullable="false" />
     <Property Name="IDProject" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Users">

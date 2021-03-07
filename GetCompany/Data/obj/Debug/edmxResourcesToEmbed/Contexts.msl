@@ -18,19 +18,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Tasks">
-      <EntityTypeMapping TypeName="GetDatabaseModel.Task">
-        <MappingFragment StoreEntitySet="Tasks">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Assignee" ColumnName="Assignee" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Progress" ColumnName="Progress" />
-          <ScalarProperty Name="Deadline" ColumnName="Deadline" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="IDProject" ColumnName="IDProject" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="GetDatabaseModel.User">
         <MappingFragment StoreEntitySet="Users">
@@ -40,6 +27,19 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="GetDatabaseModel.Task">
+        <MappingFragment StoreEntitySet="Tasks">
+          <ScalarProperty Name="IDProject" ColumnName="IDProject" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+          <ScalarProperty Name="Progress" ColumnName="Progress" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Assignee" ColumnName="Assignee" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

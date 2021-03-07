@@ -1,5 +1,4 @@
-﻿using Data;
-using GetCompany.Code;
+﻿using Data; 
 using GetCompany.Models;
 using System;
 using System.Collections.Generic;
