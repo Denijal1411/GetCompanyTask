@@ -9,3 +9,4 @@ C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\Data\obj\Debug\Data.csproj.
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\Data\obj\Debug\Data.csproj.CopyComplete
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\Data\obj\Debug\Data.dll
 C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\Data\obj\Debug\Data.pdb
+C:\Users\Deni\source\repos\GetCompanyTask\GetCompany\Data\obj\Debug\Data.csprojAssemblyReference.cache

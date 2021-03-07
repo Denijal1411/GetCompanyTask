@@ -12,7 +12,8 @@ namespace GetCompany.Models
         public int ProjectCode { get; set; }
         [Required(ErrorMessage = "Name is required.")]
         public string Name { get; set; }
-        public string Assignee { get; set; }
+        [Required(ErrorMessage = "Project manager is required.")]
+        public string Assignee { get; set; } 
         public List<User> Users { get; set; }
     }
 }

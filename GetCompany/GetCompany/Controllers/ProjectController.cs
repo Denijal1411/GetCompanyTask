@@ -17,20 +17,20 @@ namespace GetCompany.Controllers
             return View(dal.GetAll());
         }
         public virtual ActionResult AddProject()
-        {
-            //ViewBag.Managers= dal.GetManagers();
-            ProjectModel a = new ProjectModel();
-            a.Users = dal.GetManagers();
+        { 
+            ProjectModel a = new ProjectModel();  
+            a.Users = dal.GetManagers(); 
             return View(a);
-        }
+        } 
         [HttpPost]
         public virtual ActionResult AddProject(ProjectModel model)
         {
             if (ModelState.IsValid) {
-                dal.Add(new Project(){ProjectName = model.Name});
+                dal.Add(new Project(){ProjectName = model.Name,Assignee=model.Assignee});
                 return RedirectToAction("ProjectHome", "Project");
             }
             return View();
+              
         }
         public virtual ActionResult DeleteProject(string projectCode)
         {

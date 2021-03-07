@@ -27,8 +27,8 @@
                     <tr>
                         <th scope="row"></th>
                         <td>@(item.ProjectCode)</td>
-                        <td>@item.ProjectName</td> 
-                        <th>@item.Assignee</th>
+                        <th>@item.ProjectName</th> 
+                        <td>@(item.User.Name +" "+item.User.Surname)</td>
                         <td class="text-right">
                             @Html.ActionLink("Edit", "EditProject", "Project", new { projectCode = item.ProjectCode }, new { @class = "btn btn-outline-info" })
 
