@@ -17,29 +17,46 @@ namespace GetCompany.Controllers
         DALProject dalProjects = new DALProject();
         public virtual ActionResult TaskHome()
         {
+            List<TaskModel> model = new List<TaskModel>();
+            foreach (var item in dal.GetAll())
+            {
+                model.Add(new TaskModel()
+                {
+                    ID=item.ID,
+                    Project=item.Project,
+                    Assignee=item.Assignee,
+                    Deadline=item.Deadline,
+                    Description=item.Description,
+                    Progress=item.Progress,
+                    IDProject=item.IDProject,
+                    Status=item.Status,
+                    User=item.User
+                });
+            }
+
             if (User.IsInRole("Administrator"))//Admin vidi sve taskove dok Developer i projectManager treba da vide one na sebi 1411
             {
-                return View(dal.GetAll());
+                return View(model);
             }
             else if (User.IsInRole("Project Manager"))//Admin vidi sve taskove dok Developer i projectManager treba da vide one na sebi 1411
             {
                 //Project manager vidi taskove koji su na projektima koje on vodi 1411
-                var managerProjects = dal.GetProjects().Where(x => x.Assignee == User.Identity.Name).Select(x => x.ProjectCode);
-                return View(dal.GetAll().Where(x => managerProjects.Contains(x.IDProject)).ToList());
+                var managerProjects = dal.GetProjects ().Where(x => x.Assignee == User.Identity.Name).Select(x => x.ProjectCode);
+                return View(model.Where(x => managerProjects.Contains(x.IDProject)).ToList());
             }
             else
             {
-                return View(dal.GetAll().Where(x => x.Assignee == User.Identity.Name).ToList());
+                return View(model.Where(x => x.Assignee == User.Identity.Name).ToList());
             }
 
         }
         [Authorize(Roles = "Administrator, Project manager")]
         /*Developer ne moze da preko linka ukuca addtask i da udje da doda task, ne moze da kaze delete task i da obrise task kao ni usera ni projekat 1411 */
         public virtual ActionResult AddTask()
-        {
+        { 
             TaskCreateModel tasks = new TaskCreateModel();
-            tasks.Projects = dal.GetProjects();
-            tasks.Users = dalUsers.GetAll().Where(x => x.Role.Name == "Developer").ToList();
+            tasks.Projects = dal.GetProjects(); 
+            tasks.Users = DALUsers.GetAllDevelopers();
             return View(tasks);
         }
         [HttpPost]
@@ -136,11 +153,11 @@ namespace GetCompany.Controllers
             if (User.IsInRole("Project manager"))
             {
 
-                return dalUsers.GetAll().Where(x => x.IDRole == 3).ToList();
+                return DALUsers.GetAllDevelopers().ToList();
             }
             else if (User.IsInRole("Administrator"))
             {
-                return dalUsers.GetAll().Where(x => x.IDRole == 3 || x.IDRole == 2).ToList();
+                return DALUsers.GetNonAdminUsers().ToList();
             }
             else
             {

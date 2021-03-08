@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Data
@@ -14,6 +15,7 @@ namespace Data
         {
             return db.Users.FirstOrDefault(x => x.UserName == username && x.Password == password && x.Active==true);
         }
+        
         public bool UserExists(string username)
         {
             return db.Users.FirstOrDefault(x => x.UserName == username) !=null ?true:false;
@@ -52,8 +54,19 @@ namespace Data
         }
 
         public override List<User> GetAll()
-        {
+        { 
+
             return db.Users.Where(x=>x.Active==true).ToList();
-        } 
+        }
+        public static List<User> GetAllDevelopers()
+        {
+
+            return db.Users.Where(x => x.Active == true && x.Role.Name=="Developer").ToList();
+        }
+        public static List<User> GetNonAdminUsers()
+        {
+
+            return db.Users.Where(x => x.Active == true && x.Role.Name!="Administrator").ToList();
+        }
     }
 }

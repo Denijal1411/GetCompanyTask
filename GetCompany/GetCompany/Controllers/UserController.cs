@@ -15,8 +15,25 @@ namespace GetCompany.Controllers
     {
         DALUsers dal = new DALUsers();
         public virtual ActionResult UserHome()
-        {
-            return View(dal.GetAll());
+        { 
+            List<CreateUserModel> model = new List<CreateUserModel>();
+            foreach (var item in dal.GetAll())
+            {
+                model.Add(new CreateUserModel() { 
+                    Active=item.Active,
+                    Email=item.Email,
+                    IDRole=item.IDRole,
+                    Name=item.Name,
+                    Password=item.Password,
+                    Projects=item.Projects,
+                    Role=item.Role,
+                    Surname=item.Surname,
+                    Tasks=item.Tasks,
+                    UserName=item.UserName
+                });
+            }
+
+            return View(model);
         }
         public virtual ActionResult AddUser()
         {
@@ -39,9 +56,9 @@ namespace GetCompany.Controllers
                         Surname = model.Surname.Trim(),
                         UserName = model.UserName.Trim(),
                         Active=true
-                    });
-                    Thread.Sleep(500);
-                    return RedirectToAction("UserHome", "User");
+                    }); 
+                    return RedirectToAction("UserHome", "User"); 
+                     
                 }
                 catch (Exception)
                 {

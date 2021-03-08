@@ -1,4 +1,4 @@
-﻿@model List<Data.Project>
+﻿@model List<GetCompany.Models.ProjectModel>
 @{
     ViewBag.Title = "ProjectHome";
 }
@@ -22,12 +22,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.OrderBy(x=>x.ProjectName))
+                    @foreach (var item in Model.OrderBy(x=>x.Name))
                     {
                         <tr>
                             <th scope="row"></th>
                             <td>@(item.ProjectCode)</td>
-                            <th>@item.ProjectName</th>
+                            <th>@item.Name</th>
                             <td>@(item.User.Name + " " + item.User.Surname)</td>
 
                             @if (User.IsInRole("Administrator"))

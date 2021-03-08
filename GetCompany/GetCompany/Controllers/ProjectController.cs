@@ -14,8 +14,20 @@ namespace GetCompany.Controllers
         DALProject dal = new DALProject();
         DALTasks dalTask = new DALTasks();
         public virtual ActionResult ProjectHome()
-        { 
-            return View(dal.GetAll());
+        {
+            List<ProjectModel> model = new List<ProjectModel>();
+            foreach (var item in dal.GetAll())
+            {
+                model.Add(new ProjectModel()
+                {
+                     Assignee=item.Assignee,
+                     Name=item.ProjectName,
+                     ProjectCode=item.ProjectCode,
+                     Tasks=item.Tasks,
+                     User=item.User
+                });
+            }
+            return View(model);
         }
         public virtual ActionResult AddProject()
         { 

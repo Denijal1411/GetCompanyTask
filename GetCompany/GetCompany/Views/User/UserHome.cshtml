@@ -1,4 +1,4 @@
-﻿@model List<Data.User>
+﻿@model List<GetCompany.Models.CreateUserModel>
 @{
     ViewBag.Title = "UserHome";
      
@@ -30,11 +30,11 @@
                             <td>@(item.Name + " "+item.Surname)</td>
                             <td>@item.UserName</td>
                             <td>@item.Email</td>
-                            <td>@(item.Role.Name)</td>
+                            <td>@(item.GetRole(item.IDRole).Name)</td>
                             <td class="text-right">
                                 @Html.ActionLink("Edit", "EditUser", "User", new { username = item.UserName }, new { @class = "btn btn-outline-info btn-sm" })
                                 
-                                @Html.ActionLink("Delete", "DeleteUser", "User", new { username = item.UserName }, new { @class =(item.Role.Name.ToLower() == "administrator" ? " disabled" : "")+ " btn btn-outline-danger btn-sm " })
+                                @Html.ActionLink("Delete", "DeleteUser", "User", new { username = item.UserName }, new { @class =(item.Role!=null? (item.Role.Name.ToLower() == "administrator" ? " disabled" : ""):""  )+ " btn btn-outline-danger btn-sm " })
 
                             </td>
                         </tr>

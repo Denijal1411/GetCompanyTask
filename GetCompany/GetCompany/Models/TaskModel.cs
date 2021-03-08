@@ -23,7 +23,8 @@ namespace GetCompany.Models
         public string Description { get; set; }
         [Required]
         public int IDProject { get; set; }
-
+        public Project Project{ get; set; }
+        public User User{ get; set; }
         public virtual List<Project> Projects { get; set; }
         public virtual List<User> Users { get; set; }
         public List<string> Statuses { get; set; } 
@@ -47,5 +48,7 @@ namespace GetCompany.Models
         public virtual List<Project> Projects { get; set; }
         public virtual List<User> Users { get; set; }
         public List<string> Statuses { get; set; }
+        public Project Project { get; set; }
+        public User User { get; set; }
     }
 }
