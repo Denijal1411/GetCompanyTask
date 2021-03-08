@@ -12,6 +12,7 @@ namespace GetCompany.Controllers
     public partial class ProjectController : Controller
     {
         DALProject dal = new DALProject();
+        DALTasks dalTask = new DALTasks();
         public virtual ActionResult ProjectHome()
         { 
             return View(dal.GetAll());
@@ -76,9 +77,51 @@ namespace GetCompany.Controllers
                     Assignee=model.Assignee
                 });
                 return RedirectToAction("ProjectHome", "Project");
-            }
+            } 
             return View();
 
         }
+        [Authorize(Roles ="Project Manager")]
+        public virtual ActionResult popUpPartial(int id) {
+           
+            TempData["ProjectName"] = dal.Get(new Project() { ProjectCode=id}).ProjectName;
+            TempData["AvgProgress"] = getProgresStatistics(id).ToString("F");
+            TempData["numOfTask"] = dalTask.GetAll().Where(x => x.IDProject == id).Count();  
+            TempData["numOfTaskPerStatus"] = getTasksPerStatus(id);
+            TempData["numOverdueTask"] = dalTask.GetAll().Where(x => x.IDProject == id && x.Deadline < DateTime.Now).Count();
+            TempData["numExpireTask"] = dalTask.GetAll().Where(x => x.IDProject == id && x.Deadline>DateTime.Now && x.Deadline < DateTime.Now.AddDays(2)).Count();
+            return PartialView(id);
+        }
+
+
+        #region Statistics
+        private double getProgresStatistics(int id) {
+            try
+            {
+                var allTask = dalTask.GetAll().Where(x => x.IDProject == id);
+                var avg = allTask.Sum(x => x.Progress) * 1.0 / allTask.Count();
+                return allTask.Count()==0 ? (double)0 : (double)avg;
+            }
+            catch (Exception)
+            {
+
+                return (double)0;
+            }
+           
+        }
+        private Dictionary<string,int> getTasksPerStatus(int id)
+        {
+            Dictionary<string, int> data = new Dictionary<string, int>();
+            var newStatus=dalTask.GetAll().Where(x => x.IDProject == id).Where(x => x.Status.ToLower() == "new").Count();
+            var progressStatus=dalTask.GetAll().Where(x => x.IDProject == id).Where(x => x.Status.ToLower() == "in progress").Count();
+            var finishedStatus=dalTask.GetAll().Where(x => x.IDProject == id).Where(x => x.Status.ToLower() == "finished").Count();
+
+            data.Add("New", newStatus);
+            data.Add("In Progress", progressStatus);
+            data.Add("Finished", finishedStatus);
+
+            return data;
+        } 
+        #endregion
     }
 }

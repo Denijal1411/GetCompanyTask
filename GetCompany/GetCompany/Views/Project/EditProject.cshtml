@@ -11,7 +11,7 @@
             @Html.ActionLink("Cancel", "ProjectHome", "Project", null, new { @class = "btn btn-outline-info float-right" })
         </div>   
         <div class="card-body mx-auto">
-            @using (Html.BeginForm("EditProject", "Project", FormMethod.Post, new { @class = "form-horizontal" }))
+            @using (Html.BeginForm("EditProject", "Project", FormMethod.Post, new { @class = "form-horizontal",onsubmit= "AddProject()" }))
             {
                 <div class="form-group row">
                     <label class="col-form-label text-primary"><small>Project code:</small></label>

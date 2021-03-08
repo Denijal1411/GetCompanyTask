@@ -50,6 +50,6 @@ namespace Data
         public override List<User> GetAll()
         {
             return db.Users.ToList();
-        }
+        } 
     }
 }

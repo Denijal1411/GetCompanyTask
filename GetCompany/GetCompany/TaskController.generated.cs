@@ -176,10 +176,10 @@ namespace GetCompany.Controllers
         }
 
         [NonAction]
-        partial void AddTaskOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, GetCompany.Models.TaskModel model);
+        partial void AddTaskOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, GetCompany.Models.TaskCreateModel model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult AddTask(GetCompany.Models.TaskModel model)
+        public override System.Web.Mvc.ActionResult AddTask(GetCompany.Models.TaskCreateModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddTask);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);

@@ -71,6 +71,12 @@ namespace GetCompany.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditProject);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult popUpPartial()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.popUpPartial);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ProjectController Actions { get { return MVC.Project; } }
@@ -92,6 +98,7 @@ namespace GetCompany.Controllers
             public readonly string DetailProject = "DetailProject";
             public readonly string DeleteProject = "DeleteProject";
             public readonly string EditProject = "EditProject";
+            public readonly string popUpPartial = "popUpPartial";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -102,6 +109,7 @@ namespace GetCompany.Controllers
             public const string DetailProject = "DetailProject";
             public const string DeleteProject = "DeleteProject";
             public const string EditProject = "EditProject";
+            public const string popUpPartial = "popUpPartial";
         }
 
 
@@ -130,6 +138,14 @@ namespace GetCompany.Controllers
             public readonly string projectCode = "projectCode";
             public readonly string model = "model";
         }
+        static readonly ActionParamsClass_popUpPartial s_params_popUpPartial = new ActionParamsClass_popUpPartial();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_popUpPartial popUpPartialParams { get { return s_params_popUpPartial; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_popUpPartial
+        {
+            public readonly string id = "id";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -142,10 +158,12 @@ namespace GetCompany.Controllers
             {
                 public readonly string AddProject = "AddProject";
                 public readonly string EditProject = "EditProject";
+                public readonly string popUpPartial = "popUpPartial";
                 public readonly string ProjectHome = "ProjectHome";
             }
             public readonly string AddProject = "~/Views/Project/AddProject.cshtml";
             public readonly string EditProject = "~/Views/Project/EditProject.cshtml";
+            public readonly string popUpPartial = "~/Views/Project/popUpPartial.cshtml";
             public readonly string ProjectHome = "~/Views/Project/ProjectHome.cshtml";
         }
     }
@@ -233,6 +251,18 @@ namespace GetCompany.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditProject);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             EditProjectOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void popUpPartialOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult popUpPartial(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.popUpPartial);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            popUpPartialOverride(callInfo, id);
             return callInfo;
         }
 

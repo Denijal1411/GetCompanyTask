@@ -25,49 +25,8 @@ function AddProject() {
         else {
             document.getElementById("Assignee").style.border = "";
         } 
-        alert("Fill out Project name and Project manager") 
+        alert("Fill out red fields.") 
         event.preventDefault();
     } 
 
-}
-
-function AddTask() {
-    var idproject = document.getElementById("IDProject").value;
-    var assignee = document.getElementById("Assignee").value;
-    var deadline = document.getElementById("Deadline").value;
-    var description = document.getElementById("Description").value;
-    if (idproject === "" || assignee === "" || deadline === "" || description==="") {
-        if (idproject === "") {
-            document.getElementById("IDProject").style.border = "1px solid red";
-        }
-        else {
-            document.getElementById("IDProject").style.border = "";
-        }
-
-        if (description === "") {
-            document.getElementById("Description").style.border = "1px solid red";
-        }
-        else {
-            document.getElementById("Description").style.border = "";
-        }
-
-
-        if (assignee === "") {
-            document.getElementById("Assignee").style.border = "1px solid red";
-        }
-        else {
-            document.getElementById("Assignee").style.border = "";
-        }
-
-
-        if (deadline === "") {
-            document.getElementById("Deadline").style.border = "1px solid red";
-        }
-        else {
-            document.getElementById("Deadline").style.border = "";
-        }
-        alert("Fill out all red fields.")
-        event.preventDefault();
-    }
-
-}
+}  

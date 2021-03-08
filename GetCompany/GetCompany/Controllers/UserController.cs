@@ -9,16 +9,16 @@ using System.Web.Mvc;
 namespace GetCompany.Controllers
 {
 
-    [Authorize(Roles="Administrator,Project Manager")]
+    [Authorize(Roles = "Administrator,Project Manager")]
     public partial class UserController : Controller
     {
-        DALUsers dal = new DALUsers();    
+        DALUsers dal = new DALUsers();
         public virtual ActionResult UserHome()
         {
             return View(dal.GetAll());
-        } 
+        }
         public virtual ActionResult AddUser()
-        { 
+        {
             return View();
         }
         [HttpPost]
@@ -26,10 +26,10 @@ namespace GetCompany.Controllers
         {
             if (dal.UserExists(model.UserName) == true) ModelState.AddModelError("UserName", "Username already exists!.");
             if (ModelState.IsValid)
-            { 
+            {
                 try
-                { 
-                        dal.Add(new User()
+                {
+                    dal.Add(new User()
                     {
                         Email = model.Email,
                         IDRole = model.IDRole,
@@ -50,22 +50,24 @@ namespace GetCompany.Controllers
 
             }
             return View();
-            
+
         }
-        public virtual ActionResult DeleteUser(string username) {
+        public virtual ActionResult DeleteUser(string username)
+        {
             dal.Delete(new User()
-            { 
-                UserName=username
+            {
+                UserName = username
             });
             return RedirectToAction("UserHome", "User");
         }
         public virtual ActionResult EditUser(string username)
-        { 
-            try {
-                var user = dal.Get(new User() { UserName=username}); 
- 
-                
-               
+        {
+            try
+            {
+                var user = dal.Get(new User() { UserName = username });
+
+
+
                 return View(new CreateUserModel()
                 {
                     Email = user.Email,
@@ -74,30 +76,47 @@ namespace GetCompany.Controllers
                     Name = user.Name,
                     Password = user.Password,
                     UserName = user.UserName,
-                    Roles=DALUserRoles.GetAllRoles()
-                    
+                    Roles = DALUserRoles.GetAllRoles()
+
                 });
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 return RedirectToAction("UserHome", "User");
             }
-            
+
         }
         [HttpPost]
         public virtual ActionResult EditUser(CreateUserModel model)
         {
-            if (ModelState.IsValid) { 
-                dal.Update(new User() {
-                    UserName=model.UserName,
-                    Surname=model.Surname,
-                    Email=model.Email,
-                    IDRole=model.IDRole,
-                    Name=model.Name,
-                    Password=model.Password
+            var user = dal.Get(new User() { UserName = model.UserName });
+
+            if (ModelState.IsValid)
+            {
+                dal.Update(new User()
+                {
+                    UserName = model.UserName,
+                    Surname = model.Surname,
+                    Email = model.Email,
+                    IDRole = model.IDRole,
+                    Name = model.Name,
+                    Password = model.Password
                 });
-                return RedirectToAction("UserHome", "User"); 
+                return RedirectToAction("UserHome", "User");
             }
+            return View(new CreateUserModel()
+            {
+                Email = user.Email,
+                Surname = user.Surname,
+                IDRole = user.IDRole,
+                Name = user.Name,
+                Password = user.Password,
+                UserName = user.UserName,
+                Roles = DALUserRoles.GetAllRoles()
+
+            });
             return View();
+
 
         }
     }
