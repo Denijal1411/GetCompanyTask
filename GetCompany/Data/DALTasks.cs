@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Data
@@ -22,8 +23,9 @@ namespace Data
 
         public override void Add(Task t)
         {
-            db.Tasks.Add(t);
+            db.Tasks.Add(t); 
             db.SaveChanges();
+            Thread.Sleep(1000);
         }
 
         public override void Delete(Task t)

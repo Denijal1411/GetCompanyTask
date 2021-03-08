@@ -12,7 +12,7 @@ namespace Data
         private static GetDatabaseEntities db = new GetDatabaseEntities();
 
         public  List<User> GetManagers() { 
-            return db.Users.Where(x => x.IDRole == 2).ToList();
+            return db.Users.Where(x => x.IDRole == 2 && x.Active==true).ToList();
         }
         public override void Add(Project project)
         {

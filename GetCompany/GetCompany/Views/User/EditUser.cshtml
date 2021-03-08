@@ -12,6 +12,7 @@
         <div class="card-body mx-auto">
             @using (Html.BeginForm("EditUser", "User", FormMethod.Post, new { @class = "form-horizontal" }))
             {
+                @Html.HiddenFor(x=>x.Active)
                 <div class="form-group row"> 
                     <label class="col-form-label text-primary"><small>Name:</small></label>
                     @Html.TextBoxFor(x => x.Name, new { @class = "form-control mb-2", placeholder = "Name:" })

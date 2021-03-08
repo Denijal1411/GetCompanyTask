@@ -30,7 +30,8 @@ namespace GetCompany.Models
         [Required(ErrorMessage = "Surname is required.")]
         public string Surname { get; set; }
         [Required(ErrorMessage = "Rola is required.")]
-        public int IDRole { get; set; } 
+        public int IDRole { get; set; }
+        public bool Active { get; set; }
         public string Role { 
             get { return Roles.FirstOrDefault(x => x.ID == IDRole).Name; }
             set { Role = value; } }

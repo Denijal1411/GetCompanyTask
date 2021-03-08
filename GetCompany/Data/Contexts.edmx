@@ -42,6 +42,7 @@
           <Property Name="Surname" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="IDRole" Type="int" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK__Projects__Assign__3C69FB99">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
@@ -170,6 +171,7 @@
           <NavigationProperty Name="Role" Relationship="GetDatabaseModel.FK__Users__IDRole__34C8D9D1" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="Projects" Relationship="GetDatabaseModel.FK__Projects__Assign__3C69FB99" FromRole="User" ToRole="Project" />
           <NavigationProperty Name="Tasks" Relationship="GetDatabaseModel.FK__Tasks__Assignee__35BCFE0A" FromRole="User" ToRole="Task" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__Users__IDRole__34C8D9D1">
           <End Type="GetDatabaseModel.Role" Role="Role" Multiplicity="1" />
@@ -259,6 +261,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="GetDatabaseModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="IDRole" ColumnName="IDRole" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />

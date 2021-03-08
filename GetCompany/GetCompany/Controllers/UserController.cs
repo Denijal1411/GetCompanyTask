@@ -3,6 +3,7 @@ using GetCompany.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
@@ -36,20 +37,22 @@ namespace GetCompany.Controllers
                         Name = model.Name.Trim(),
                         Password = model.Password.Trim(),
                         Surname = model.Surname.Trim(),
-                        UserName = model.UserName.Trim()
+                        UserName = model.UserName.Trim(),
+                        Active=true
                     });
+                    Thread.Sleep(500);
                     return RedirectToAction("UserHome", "User");
                 }
                 catch (Exception)
                 {
 
-                    return View();
+                     
                 }
 
 
 
             }
-            return View();
+            return View(model);
 
         }
         public virtual ActionResult DeleteUser(string username)
@@ -66,7 +69,7 @@ namespace GetCompany.Controllers
             {
                 var user = dal.Get(new User() { UserName = username });
 
-
+                if(user==null) throw new  Exception(); //kada udjem u link user/edituser da ne pukne
 
                 return View(new CreateUserModel()
                 {
@@ -76,6 +79,7 @@ namespace GetCompany.Controllers
                     Name = user.Name,
                     Password = user.Password,
                     UserName = user.UserName,
+                    Active=user.Active,
                     Roles = DALUserRoles.GetAllRoles()
 
                 });
@@ -100,6 +104,7 @@ namespace GetCompany.Controllers
                     Email = model.Email!=null?model.Email.Trim():null,
                     IDRole = model.IDRole,
                     Name = model.Name.Trim(),
+                    Active=model.Active,
                     Password = model.Password.Trim()
                 });
                 return RedirectToAction("UserHome", "User");
@@ -112,6 +117,7 @@ namespace GetCompany.Controllers
                 Name = user.Name,
                 Password = user.Password,
                 UserName = user.UserName,
+                Active=model.Active,
                 Roles = DALUserRoles.GetAllRoles()
 
             });

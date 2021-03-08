@@ -3,6 +3,7 @@ using GetCompany.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
@@ -45,7 +46,7 @@ namespace GetCompany.Controllers
         public virtual ActionResult AddTask(TaskCreateModel model)
         {
             if (dalUsers.UserHasMoreTasks(model.Assignee)) { 
-                ModelState.AddModelError("Assignee", $"User {model.Assignee} has more then 3 tasks.");
+                ModelState.AddModelError("Assignee", $"User {model.Assignee} already has 3 tasks.");
             }
             if (ModelState.IsValid)
             {
@@ -58,11 +59,12 @@ namespace GetCompany.Controllers
                     Progress=0,
                     Status="New"
                 });
+                
                 return RedirectToAction("TaskHome", "Task");
             }
             //updatujem model pre nego st oga posaljem na addTask jer mi je vratio exception 1411
             model.Projects = dal.GetProjects().ToList();
-            model.Users = dalUsers.GetAll().Where(x => x.Role.Name == "Developer").ToList();
+            model.Users = dalUsers.GetAll().Where(x => x.Role.Name == "Developer").ToList(); 
             return View(model);
 
         }

@@ -12,14 +12,14 @@ namespace Data
         private static GetDatabaseEntities db = new GetDatabaseEntities();
         public static User CheckUser(string username, string password)
         {
-            return db.Users.FirstOrDefault(x => x.UserName == username && x.Password == password);
+            return db.Users.FirstOrDefault(x => x.UserName == username && x.Password == password && x.Active==true);
         }
         public bool UserExists(string username)
         {
             return db.Users.FirstOrDefault(x => x.UserName == username) !=null ?true:false;
         }
         public bool UserHasMoreTasks(string user) { 
-            return db.Tasks.Where(x => x.Assignee == user && x.Status != "Finished").Count() > 3 ? true : false;
+            return db.Tasks.Where(x => x.Assignee == user && x.Status != "Finished").Count() == 3 ? true : false;
         }
         public override void Update(User user)
         {
@@ -29,6 +29,7 @@ namespace Data
             searchUser.Email = user.Email;
             searchUser.Password = user.Password;
             searchUser.IDRole = user.IDRole;
+            searchUser.Active = user.Active;
 
             db.SaveChanges();
         }
@@ -40,19 +41,19 @@ namespace Data
         }
         public override void Delete(User user)
         {
-            var searchUser = db.Users.FirstOrDefault(x => x.UserName == user.UserName);
-            db.Users.Remove(searchUser);
+            var searchUser = db.Users.FirstOrDefault(x => x.UserName == user.UserName && x.Active==true);
+            searchUser.Active = false; 
             db.SaveChanges(); 
         }
 
         public override User Get(User t)
         {
-            return db.Users.FirstOrDefault(x => x.UserName == t.UserName);
+            return db.Users.FirstOrDefault(x => x.UserName == t.UserName && x.Active==true);
         }
 
         public override List<User> GetAll()
         {
-            return db.Users.ToList();
+            return db.Users.Where(x=>x.Active==true).ToList();
         } 
     }
 }
