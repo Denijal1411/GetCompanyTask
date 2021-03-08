@@ -13,3 +13,9 @@ li {
 .table_font_size {
     font-size:12px;
 }
+.RedItem {
+    background-color: #f9cfcf;
+}
+tr:hover {
+    background-color: #e2e2e2;
+}

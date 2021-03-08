@@ -31,10 +31,11 @@ namespace GetCompany.Controllers
         [HttpPost]
         public virtual ActionResult AddProject(ProjectModel model)
         {
+            if (model.Name.Trim() == "") ModelState.AddModelError("Name", "Name is required.");
             if (ModelState.IsValid) {
-                dal.Add(new Project(){ProjectName = model.Name,Assignee=model.Assignee});
+                dal.Add(new Project(){ProjectName = model.Name.Trim(),Assignee=model.Assignee});
                 return RedirectToAction("ProjectHome", "Project");
-            }
+            } 
             return View();
               
         }
@@ -73,7 +74,7 @@ namespace GetCompany.Controllers
                 dal.Update(new Project()
                 {
                     ProjectCode=model.ProjectCode,
-                    ProjectName=model.Name,
+                    ProjectName=model.Name.Trim(),
                     Assignee=model.Assignee
                 });
                 return RedirectToAction("ProjectHome", "Project");
@@ -83,14 +84,22 @@ namespace GetCompany.Controllers
         }
         [Authorize(Roles ="Project Manager")]
         public virtual ActionResult popUpPartial(int id) {
-           
-            TempData["ProjectName"] = dal.Get(new Project() { ProjectCode=id}).ProjectName;
-            TempData["AvgProgress"] = getProgresStatistics(id).ToString("F");
-            TempData["numOfTask"] = dalTask.GetAll().Where(x => x.IDProject == id).Count();  
-            TempData["numOfTaskPerStatus"] = getTasksPerStatus(id);
-            TempData["numOverdueTask"] = dalTask.GetAll().Where(x => x.IDProject == id && x.Deadline < DateTime.Now).Count();
-            TempData["numExpireTask"] = dalTask.GetAll().Where(x => x.IDProject == id && x.Deadline>DateTime.Now && x.Deadline < DateTime.Now.AddDays(2)).Count();
-            return PartialView(id);
+
+            try
+            {
+                TempData["ProjectName"] = dal.Get(new Project() { ProjectCode = id }).ProjectName;
+                TempData["AvgProgress"] = getProgresStatistics(id).ToString("F");
+                TempData["numOfTask"] = dalTask.GetAll().Where(x => x.IDProject == id).Count();
+                TempData["numOfTaskPerStatus"] = getTasksPerStatus(id);
+                TempData["numOverdueTask"] = dalTask.GetAll().Where(x => x.IDProject == id && x.Deadline < DateTime.Now).Count();
+                TempData["numExpireTask"] = dalTask.GetAll().Where(x => x.IDProject == id && x.Deadline > DateTime.Now && x.Deadline < DateTime.Now.AddDays(2)).Count();
+                return PartialView(id);
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("ProjectHome", "Project");
+            }
         }
 
 

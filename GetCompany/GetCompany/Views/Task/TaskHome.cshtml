@@ -24,9 +24,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.OrderBy(x=>x.IDProject))
                     {
-                        <tr>
+                        <tr class="@(item.Deadline>DateTime.Now && item.Deadline<=DateTime.Now.AddDays(5)?"RedItem":"")">
                             <td scope="row"></td>
                             <th>@item.Project.ProjectName</th>
                             <th>@item.Project.Assignee</th>

@@ -18,6 +18,9 @@ namespace Data
         {
             return db.Users.FirstOrDefault(x => x.UserName == username) !=null ?true:false;
         }
+        public bool UserHasMoreTasks(string user) { 
+            return db.Tasks.Where(x => x.Assignee == user && x.Status != "Finished").Count() > 3 ? true : false;
+        }
         public override void Update(User user)
         {
             var searchUser = db.Users.FirstOrDefault(x => x.UserName == user.UserName);

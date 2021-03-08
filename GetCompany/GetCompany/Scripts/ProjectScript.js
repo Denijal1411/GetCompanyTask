@@ -9,8 +9,8 @@
  
 
 function AddProject() {  
-    var assignee = document.getElementById("Assignee").value;
-    var name = document.getElementById("Name").value;
+    var assignee = document.getElementById("Assignee").value.trim();
+    var name = document.getElementById("Name").value.trim();
     if (name === "" || assignee === "") { 
         if (name === "")
         {

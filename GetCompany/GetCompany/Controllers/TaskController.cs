@@ -43,14 +43,17 @@ namespace GetCompany.Controllers
         }
         [HttpPost]
         public virtual ActionResult AddTask(TaskCreateModel model)
-        { 
+        {
+            if (dalUsers.UserHasMoreTasks(model.Assignee)) { 
+                ModelState.AddModelError("Assignee", $"User {model.Assignee} has more then 3 tasks.");
+            }
             if (ModelState.IsValid)
             {
                 dal.Add(new Task()
                 {
                     Assignee = model.Assignee,
                     Deadline = model.Deadline,
-                    Description = model.Description,
+                    Description = model.Description.Trim(),
                     IDProject = model.IDProject,
                     Progress=0,
                     Status="New"
@@ -76,7 +79,7 @@ namespace GetCompany.Controllers
                 //AKO GA POKRENEM IZ VJUA GDE NEMA ID ON PUKNE 1411
                 var task = dal.Get(new Task() { ID = Convert.ToInt32(id) });
 
-                if (task == null) { throw new ArgumentException("username is null"); }
+                if (task == null) { throw new ArgumentException(""); }
 
                 TaskModel model = new TaskModel()
                 {
@@ -91,10 +94,7 @@ namespace GetCompany.Controllers
                 };
                 ViewBag.getProject = model.Projects.FirstOrDefault(x => x.ProjectCode == model.IDProject).ProjectName;
                 ViewBag.currentAssignee = model.Assignee;
-                model.Users = GetAllUsersWithCurrentRole(); 
-                //Proveri ako sam dev da vidim samo moje edit task
-                //project amnager vidi dev sve 
-                //administrator sve 1411
+                model.Users = GetAllUsersWithCurrentRole();  
                 return View(model);
             }
             catch (Exception e)
@@ -112,7 +112,7 @@ namespace GetCompany.Controllers
                 {
                     Assignee = model.Assignee,
                     Deadline = model.Deadline,
-                    Description = model.Description,
+                    Description = model.Description.Trim(),
                     ID = model.ID,
                     IDProject = model.IDProject,
                     Progress = model.Progress,

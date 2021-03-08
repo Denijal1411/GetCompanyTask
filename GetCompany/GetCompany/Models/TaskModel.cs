@@ -41,7 +41,7 @@ namespace GetCompany.Models
         public System.DateTime Deadline { get; set; }
         [Required]
         public string Description { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Project name is required.")]
         public int IDProject { get; set; }
 
         public virtual List<Project> Projects { get; set; }

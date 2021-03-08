@@ -24,19 +24,19 @@ namespace GetCompany.Controllers
         [HttpPost]
         public virtual ActionResult AddUser(CreateUserModel model)
         {
-            if (dal.UserExists(model.UserName) == true) ModelState.AddModelError("UserName", "Username already exists!.");
+            if (dal.UserExists(model.UserName) == true) ModelState.AddModelError("UserName", "Username already exists!."); 
             if (ModelState.IsValid)
             {
                 try
                 {
                     dal.Add(new User()
                     {
-                        Email = model.Email,
+                        Email = model.Email!=null?model.Email.Trim():null,
                         IDRole = model.IDRole,
-                        Name = model.Name,
-                        Password = model.Password,
-                        Surname = model.Surname,
-                        UserName = model.UserName
+                        Name = model.Name.Trim(),
+                        Password = model.Password.Trim(),
+                        Surname = model.Surname.Trim(),
+                        UserName = model.UserName.Trim()
                     });
                     return RedirectToAction("UserHome", "User");
                 }
@@ -95,12 +95,12 @@ namespace GetCompany.Controllers
             {
                 dal.Update(new User()
                 {
-                    UserName = model.UserName,
-                    Surname = model.Surname,
-                    Email = model.Email,
+                    UserName = model.UserName.Trim(),
+                    Surname = model.Surname.Trim(),
+                    Email = model.Email!=null?model.Email.Trim():null,
                     IDRole = model.IDRole,
-                    Name = model.Name,
-                    Password = model.Password
+                    Name = model.Name.Trim(),
+                    Password = model.Password.Trim()
                 });
                 return RedirectToAction("UserHome", "User");
             }
