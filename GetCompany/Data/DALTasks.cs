@@ -14,7 +14,7 @@ namespace Data
         
         public List<Project> GetProjects()
         {
-            return db.Projects.ToList();
+            return db.Projects.Where(x=>x.Active==true).ToList();
         }
         public List<string> GetStatuses()
         {

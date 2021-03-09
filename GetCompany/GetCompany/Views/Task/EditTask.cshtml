@@ -51,7 +51,7 @@
                         <label class="col-form-label text-primary"><small>Deadline:</small></label>
                     </div>
                     <div class="row">
-                        @if (User.IsInRole("Developer")) //ako je divelopert ne moze da menja deadline 1411
+                        @if (User.IsInRole("Developer")) //dev can't change deadline
                         {
                             @Html.HiddenFor(x => x.Deadline)
                             @Html.TextBoxFor(x => x.Deadline, new { disabled = true, @class = "form-control" })

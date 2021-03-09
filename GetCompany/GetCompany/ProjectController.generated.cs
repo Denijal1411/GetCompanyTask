@@ -95,7 +95,6 @@ namespace GetCompany.Controllers
         {
             public readonly string ProjectHome = "ProjectHome";
             public readonly string AddProject = "AddProject";
-            public readonly string DetailProject = "DetailProject";
             public readonly string DeleteProject = "DeleteProject";
             public readonly string EditProject = "EditProject";
             public readonly string popUpPartial = "popUpPartial";
@@ -106,7 +105,6 @@ namespace GetCompany.Controllers
         {
             public const string ProjectHome = "ProjectHome";
             public const string AddProject = "AddProject";
-            public const string DetailProject = "DetailProject";
             public const string DeleteProject = "DeleteProject";
             public const string EditProject = "EditProject";
             public const string popUpPartial = "popUpPartial";
@@ -192,17 +190,6 @@ namespace GetCompany.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddProject);
             AddProjectOverride(callInfo);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void DetailProjectOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult DetailProject()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DetailProject);
-            DetailProjectOverride(callInfo);
             return callInfo;
         }
 

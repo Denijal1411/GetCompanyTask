@@ -22,24 +22,24 @@ namespace Data
 
         public override void Delete(Project project)
         {
-            var searchProject = db.Projects.FirstOrDefault(x => x.ProjectCode == project.ProjectCode);
-            db.Projects.Remove(searchProject);
+            var searchProject = db.Projects.FirstOrDefault(x => x.ProjectCode == project.ProjectCode && x.Active==true);
+            searchProject.Active = false;
             db.SaveChanges();
         }
 
         public override Project Get(Project t)
         {
-            return db.Projects.FirstOrDefault(x => x.ProjectCode == t.ProjectCode);
+            return db.Projects.FirstOrDefault(x => x.ProjectCode == t.ProjectCode && x.Active==true);
         }
 
         public override List<Project> GetAll()
         {
-            return db.Projects.ToList();
+            return db.Projects.Where(x=>x.Active==true).ToList();
         }
 
         public override void Update(Project t)
         {
-            var search = db.Projects.FirstOrDefault(x => x.ProjectCode == t.ProjectCode);
+            var search = db.Projects.FirstOrDefault(x => x.ProjectCode == t.ProjectCode && x.Active==true);
             search.ProjectName = t.ProjectName;
             search.Assignee = t.Assignee;  
             db.SaveChanges();

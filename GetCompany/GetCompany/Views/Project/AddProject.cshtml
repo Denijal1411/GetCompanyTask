@@ -16,7 +16,7 @@
             <div id="messageName"></div>
             <div id="messageAssignee"></div>
             @using (Html.BeginForm("AddProject", "Project", FormMethod.Post, new { @class = "form-horizontal", @onsubmit = "AddProject()"}))
-            {
+            { 
                 <div class="form-group">
                     <div class="row">
                         @Html.TextBoxFor(x => x.Name, new { @class = "form-control mb-2", placeholder = "Project name:" })

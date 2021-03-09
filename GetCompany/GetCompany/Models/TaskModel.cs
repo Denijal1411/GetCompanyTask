@@ -7,6 +7,7 @@ using System.Web;
 
 namespace GetCompany.Models
 {
+    //task create model doesnt have required status and progress because when add task it set automaticaly
     public class TaskModel
     {
         public int ID { get; set; }
@@ -29,7 +30,7 @@ namespace GetCompany.Models
         public virtual List<User> Users { get; set; }
         public List<string> Statuses { get; set; } 
     }
-    public class TaskCreateModel//razlikuje se od ovog gore jer nema required status i progres jer se dodaju automacki 1411
+    public class TaskCreateModel
     {
         public int ID { get; set; }
         [Required]

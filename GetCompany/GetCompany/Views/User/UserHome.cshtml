@@ -24,7 +24,7 @@
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
-                    {//Dole se vidi kod Delete dugmeta da Administrator ne moze sebe da obrise 1411
+                    {//administrator cant delete hisself
                         <tr>
                             <th scope="row"></th>
                             <td>@(item.Name + " "+item.Surname)</td>

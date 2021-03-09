@@ -35,27 +35,25 @@ namespace GetCompany.Controllers
             allManagers.Users = dal.GetManagers();
             allManagers.Assignee = User.Identity.Name;
             return View(allManagers);
-        }
-        public virtual ActionResult DetailProject()
-        {
-            return View();
-        }
+        } 
         [HttpPost]
         public virtual ActionResult AddProject(ProjectModel model)
         {
             if (model.Name.Trim() == "") ModelState.AddModelError("Name", "Name is required.");
             if (ModelState.IsValid) {
-                dal.Add(new Project(){ProjectName = model.Name.Trim(),Assignee=model.Assignee});
+                dal.Add(new Project(){ProjectName = model.Name.Trim(),Assignee=model.Assignee,Active=true});
                 return RedirectToAction("ProjectHome", "Project");
             } 
             return View();
               
         }
+        [Authorize(Roles ="Administrator")]
         public virtual ActionResult DeleteProject(string projectCode)
         {
             dal.Delete(new Project() { ProjectCode = Convert.ToInt32(projectCode)});
             return RedirectToAction("ProjectHome", "Project");
         }
+        [Authorize(Roles ="Administrator")]
         public virtual ActionResult EditProject(string projectCode)
         {
             try
@@ -87,7 +85,8 @@ namespace GetCompany.Controllers
                 {
                     ProjectCode=model.ProjectCode,
                     ProjectName=model.Name.Trim(),
-                    Assignee=model.Assignee
+                    Assignee=model.Assignee,
+                    Active=true
                 });
                 return RedirectToAction("ProjectHome", "Project");
             } 

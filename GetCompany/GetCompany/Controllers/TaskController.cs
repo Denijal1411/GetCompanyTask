@@ -33,14 +33,14 @@ namespace GetCompany.Controllers
                     User=item.User
                 });
             }
-
-            if (User.IsInRole("Administrator"))//Admin vidi sve taskove dok Developer i projectManager treba da vide one na sebi 1411
+            //admin can view all tasks, while dev and project manager should see his tasks
+            if (User.IsInRole("Administrator")) 
             {
                 return View(model);
             }
-            else if (User.IsInRole("Project Manager"))//Admin vidi sve taskove dok Developer i projectManager treba da vide one na sebi 1411
-            {
-                //Project manager vidi taskove koji su na projektima koje on vodi 1411
+            else if (User.IsInRole("Project Manager")) 
+            { 
+                //project manager can see his project tasks
                 var managerProjects = dal.GetProjects ().Where(x => x.Assignee == User.Identity.Name).Select(x => x.ProjectCode);
                 return View(model.Where(x => managerProjects.Contains(x.IDProject)).ToList());
             }
@@ -51,7 +51,7 @@ namespace GetCompany.Controllers
 
         }
         [Authorize(Roles = "Administrator, Project manager")]
-        /*Developer ne moze da preko linka ukuca addtask i da udje da doda task, ne moze da kaze delete task i da obrise task kao ni usera ni projekat 1411 */
+        /*Developer can't view addtask accross link, because he cant see button*/
         public virtual ActionResult AddTask()
         { 
             TaskCreateModel tasks = new TaskCreateModel();
@@ -79,13 +79,13 @@ namespace GetCompany.Controllers
                 
                 return RedirectToAction("TaskHome", "Task");
             }
-            //updatujem model pre nego st oga posaljem na addTask jer mi je vratio exception 1411
+            //update model after pass data to View again 
             model.Projects = dal.GetProjects().ToList();
             model.Users = dalUsers.GetAll().Where(x => x.Role.Name == "Developer").ToList(); 
             return View(model);
 
         }
-        [Authorize(Roles = "Administrator, Project manager")] //vidi moze li project manager da brise takosve 1411
+        [Authorize(Roles = "Administrator, Project manager")]  
         public virtual ActionResult DeleteTask(string id)
         {
             dal.Delete(new Task() { ID = Convert.ToInt32(id) });
@@ -94,8 +94,7 @@ namespace GetCompany.Controllers
         public virtual ActionResult EditTask(string id)
         {
             try
-            {
-                //AKO GA POKRENEM IZ VJUA GDE NEMA ID ON PUKNE 1411
+            { 
                 var task = dal.Get(new Task() { ID = Convert.ToInt32(id) });
 
                 if (task == null) { throw new ArgumentException(""); }
