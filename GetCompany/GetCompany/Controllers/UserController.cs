@@ -86,7 +86,7 @@ namespace GetCompany.Controllers
             {
                 var user = dal.Get(new User() { UserName = username });
 
-                if(user==null) throw new  Exception(); //kada udjem u link user/edituser da ne pukne
+                if(user==null) throw new  Exception(); // user/edituser cant throw error
 
                 return View(new CreateUserModel()
                 {
