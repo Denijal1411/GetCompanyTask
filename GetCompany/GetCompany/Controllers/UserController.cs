@@ -13,7 +13,7 @@ namespace GetCompany.Controllers
     [Authorize(Roles = "Administrator,Project Manager")]
     public partial class UserController : Controller
     {
-        DALUsers dal = new DALUsers();
+        DALUsers dal=new DALUsers();
         public virtual ActionResult UserHome()
         { 
             List<CreateUserModel> model = new List<CreateUserModel>();

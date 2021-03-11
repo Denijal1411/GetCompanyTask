@@ -21,31 +21,31 @@ namespace Data
             return new List<string>() { "New", "In Progress", "Finished" };
         }
 
-        public override void Add(Task t)
+        public void Add(Task t)
         {
             db.Tasks.Add(t); 
             db.SaveChanges();
             Thread.Sleep(1000);
         }
 
-        public override void Delete(Task t)
+        public void Delete(Task t)
         {
             var searchTask = db.Tasks.FirstOrDefault(x => x.ID == t.ID);
             db.Tasks.Remove(searchTask);
             db.SaveChanges();
         }
 
-        public override Task Get(Task t)
+        public Task Get(Task t)
         {
             return db.Tasks.FirstOrDefault(x => x.ID == t.ID);
         }
 
-        public override List<Task> GetAll()
+        public List<Task> GetAll()
         {
             return db.Tasks.ToList();
         }
 
-        public override void Update(Task t)
+        public void Update(Task t)
         {
             var search = db.Tasks.FirstOrDefault(x => x.ID == t.ID);
             search.Progress = t.Progress; 

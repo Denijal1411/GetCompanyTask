@@ -11,8 +11,8 @@ namespace GetCompany.Controllers
     [Authorize(Roles = "Administrator, Project Manager")]
     public partial class ProjectController : Controller
     {
-        DALProject dal = new DALProject();
-        DALTasks dalTask = new DALTasks();
+        DALProject dal=new DALProject();
+        DALTasks dalTask=new DALTasks(); 
         public virtual ActionResult ProjectHome()
         {
             List<ProjectModel> model = new List<ProjectModel>();

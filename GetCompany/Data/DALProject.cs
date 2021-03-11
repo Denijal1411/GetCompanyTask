@@ -14,30 +14,30 @@ namespace Data
         public  List<User> GetManagers() { 
             return db.Users.Where(x => x.IDRole == 2 && x.Active==true).ToList();
         }
-        public override void Add(Project project)
+        public void Add(Project project)
         {
             db.Projects.Add(project); 
             db.SaveChanges();
         }
 
-        public override void Delete(Project project)
+        public void Delete(Project project)
         {
             var searchProject = db.Projects.FirstOrDefault(x => x.ProjectCode == project.ProjectCode && x.Active==true);
             searchProject.Active = false;
             db.SaveChanges();
         }
 
-        public override Project Get(Project t)
+        public Project Get(Project t)
         {
             return db.Projects.FirstOrDefault(x => x.ProjectCode == t.ProjectCode && x.Active==true);
         }
 
-        public override List<Project> GetAll()
+        public List<Project> GetAll()
         {
             return db.Projects.Where(x=>x.Active==true).ToList();
         }
 
-        public override void Update(Project t)
+        public void Update(Project t)
         {
             var search = db.Projects.FirstOrDefault(x => x.ProjectCode == t.ProjectCode && x.Active==true);
             search.ProjectName = t.ProjectName;

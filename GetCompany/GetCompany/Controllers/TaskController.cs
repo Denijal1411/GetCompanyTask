@@ -12,9 +12,9 @@ namespace GetCompany.Controllers
     [Authorize(Roles = "Administrator, Project Manager,Developer")]
     public partial class TaskController : Controller
     {
-        DALTasks dal = new DALTasks();
-        DALUsers dalUsers = new DALUsers();
-        DALProject dalProjects = new DALProject();
+        DALTasks dal=new DALTasks();
+        DALUsers dalUsers=new DALUsers();
+        DALProject dalProjects=new DALProject();
         public virtual ActionResult TaskHome()
         {
             List<TaskModel> model = new List<TaskModel>();
